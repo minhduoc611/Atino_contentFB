@@ -1,11 +1,8 @@
-name: Sync Content to Lark
+name: Sync Facebook to Lark
 
 on:
   schedule:
-    # Chạy mỗi ngày lúc 00:00 UTC = 7:00 AM giờ Việt Nam
-    - cron: '0 0 * * *'
-  
-  # Cho phép chạy thủ công từ GitHub UI
+    - cron: '0 0 * * *'  # 7:00 AM VN
   workflow_dispatch:
 
 jobs:
@@ -24,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install requests
     
     - name: Run sync script
       run: python get_content_fb.py
